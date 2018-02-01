@@ -7,6 +7,14 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
+
+<script src="js/cart.js"></script>
+<script>
+    window.addEventListener('load', function() {
+        new Cart(document.querySelector("#cart"));
+    })
+</script>
+
 <title>Moses-Bread</title>
 </head>
 <body>
@@ -58,11 +66,11 @@
                     <h4 class="half-vertical-padding"><strong>If the item that you ordered does not show up on this review, please try again.</strong></h4>
                     <p class="line line-top"></p>
                     <p class="line line-bottom"></p>
-                    <table class="order-table order-table-mycart txt-right half-vertical-margin" width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <table class="order-table order-table-mycart txt-right half-vertical-margin" id="cart" width="100%" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                             <th class="first txt-left">Item Description</th>
-                            <th>Quantity</th>
                             <th>Price</th>
+                            <th>Quantity</th>
                             <th class="last">Extended</th>
                         </tr>
                         <tr>
@@ -71,12 +79,18 @@
                                 <p class="line line-bottom"></p>    
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="no-order">
+                            <td colspan="4" class="txt-center"><p class="base-padding"><span class="h2">There is no order content.</span></p></td>
+                        </tr>
+                        <!-- cart content -->
+                        <tr id="cart_item_template">
                             <td class="first txt-left">
                                 <span class="thumbs"><a href="menu_baguette.html" target="_self"><img src="images/common/thumbs_baguette_01.jpg" alt="thumbs_baguette" /></a></span>
                                 <button class="btn btn-sm btn-bg" type="button">Sourdough Baguette</button>
+<!--                                 
                                 <button class="btn btn-sm btn-bg btn-bluecheese active" type="button">Blue cheese<i class="fa fa-times" aria-hidden="true"></i></button>
                                 <button class="btn btn-sm btn-bg btn-cranberry active" type="button">Cranberry<i class="fa fa-times" aria-hidden="true"></i></button>
+                                 -->
                             </td>
                             <td>4.50</td>
                             <td>
@@ -88,26 +102,10 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="last">9.00<button class="btn btn-sm btn-bg" type="button"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+                            <td class="last"><span>9.00</span><button class="btn btn-sm btn-bg" type="button"><i class="fa fa-times" aria-hidden="true"></i></button></td>
                         </tr>
-                        <tr>
-                            <td class="first txt-left">
-                                <span class="thumbs"><a href="menu_boule.html" target="_self"><img src="images/common/thumbs_boule_01.jpg" alt="thumbs_boule" /></a></span>
-                                <button class="btn btn-sm btn-bg" type="button">Sourdough Boule</button>
-                            </td>
-                            <td>3.50</td>
-                            <td>
-                                <div class="quantity-wrap">
-                                    <input class="quantity-inner quantity-input border-on txt-right" type="text" name="quantity" maxlength="3" value="1">
-                                    <div class="quantity-inner">
-                                        <button class="btn-caret btn-caret-up" type="button"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
-                                        <button class="btn-caret btn-caret-down" type="button"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="last">3.50<button class="btn btn-sm btn-bg" type="button"><i class="fa fa-times" aria-hidden="true"></i></button></td>
-                        </tr>
-                        <tr>
+                        <!-- // cart content -->
+                        <tr id="cart_content_end">
                             <td class="half-vertical-padding" colspan="4">
                                 <p class="line line-top"></p>
                                 <p class="line line-bottom"></p>    
