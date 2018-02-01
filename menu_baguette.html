@@ -88,7 +88,7 @@
             <!-- // wrapper -->
             <!-- wrapper -->
             <div class="wrapper">
-                <div class="flexbox">
+                <div class="flexbox dkcart_order">
                     <div class="goods-prview">
                         <div class="preview-img">
                             <img src="images/common/preview_baguette_01.jpg" alt="preview_baguette_01">
@@ -173,7 +173,7 @@
                         </div>
                         <!-- // options2 -->
                         <!-- options3 -->
-                        <div class="options quarter-vertical-padding" id="option3">
+                        <div class="options quarter-vertical-padding dkcart_flavor_options">
                             <p class="options-tit">Choose flavor (Max 2)</p>
 
                             <input type="checkbox" id="c-bcheese" class="btn-checkout" name="chooseflavor" value="Blue cheese">
@@ -216,7 +216,7 @@
                         <p class="line line-top"></p>
                         <p class="line line-bottom"></p>
                         <dl class="dl-txt">
-                            <dt class="sort">Sourdough baguette Basic</dt>
+                            <dt class="sort">Price</dt>
                             <dd>
                                 <strong class="h5" id="final_price">$3.50</strong>
                             </dd>
@@ -224,13 +224,13 @@
                         <!-- tip-wrap -->
                         <div class="clearfix tip-wrap">
                             <div class="quantity-wrap border-on">
-                                <input class="quantity-inner quantity-input border-on txt-right" type="text" name="quantity" maxlength="3" value="2">
+                                <input class="quantity-inner quantity-input border-on txt-right" id="quantity" type="text" name="quantity" maxlength="3" value="1">
                                 <div class="quantity-inner">
                                     <button class="btn-caret btn-caret-up border-on" type="button">
-                                        <i class="fa fa-caret-up" aria-hidden="true"></i>
+                                        <i class="fa fa-caret-up" aria-hidden="true" id="quantity_more" ></i>
                                     </button>
                                     <button class="btn-caret btn-caret-down border-on" type="button">
-                                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                                        <i class="fa fa-caret-down" aria-hidden="true" id="quantity_less" ></i>
                                     </button>
                                 </div>
                             </div>
