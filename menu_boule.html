@@ -8,6 +8,14 @@
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
 <script src="js/cart.js"></script>
+<script>
+    window.addEventListener('load', () => {
+        var cart = [];
+
+        var orderPage = document.querySelector(".dkcart_order")
+        new OrderPage(orderPage, "boule");
+    })
+</script>
 <title>Moses-Bread</title>
 </head>
 <body>
@@ -142,7 +150,7 @@
                                 </button>
                             </div>
                         </div>
-                        <button class="btn btn-goods btn-bg" type="button">Add to Cart</button>
+                        <button class="btn btn-goods btn-bg" type="button" id="addToCart">Add to Cart</button>
                         <button class="btn btn-goods" type="button" onclick="location.href='mycart.html'">Checkout</button>
                         <!-- tip -->
                         <div class="tip" style="top: -20px; left: 160px;">

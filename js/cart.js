@@ -4,11 +4,12 @@ function CartItem(type, flavors, num) {
     this.num = num;
 
     this.getPrice = function() {
-        return 3.5 + this.flavors.length * 0.5;
+        return (3.5 + this.flavors.length * 0.5) * this.num;
     }
 }
 
-function OrderPage(orderPage) {
+function OrderPage(orderPage, type) {
+    this.type = type;
     this.orderPage = orderPage;
     this.flavorOptions = orderPage.querySelector(".flavor_options");
     this.quantityInput = orderPage.querySelector("#quantity");
@@ -48,6 +49,8 @@ OrderPage.prototype.onInputClick = function(ev) {
         case "r-basic":
             this.flavorOptions.classList.remove("on");
             break;
+        case "addToCart":
+            return this.addToCart();
     }
     
     
@@ -62,15 +65,32 @@ OrderPage.prototype.onInputClick = function(ev) {
     var price = (3.5 + 0.5 * ((this.flavorOptions.classList.contains("on")) ? numOptions : 0)) * quantity;
     this.orderPage.querySelector("#final_price").innerText = "$" + price.toFixed(2);
 }
+OrderPage.prototype.addToCart = function() {
+    var flavors = [];
+    this.flavorOptions.querySelectorAll("input:checked").forEach(function(tag) {
+        flavors.push(tag.value);
+    })
+    var num = parseInt(this.orderPage.querySelector("#quantity").value);
+
+    var cartItem = new CartItem(this.type, flavors, num);
+
+    // get a cookie
+    var cartCookie = 
+        document.cookie.split(";")
+            .map(function(x) {
+                return x.trimLeft()
+            }).filter( function(x) {
+                return x.startsWith("cart=")
+            }).map( function(x) {
+                return x.replace("cart=","");
+            })[0] || "[]";
+
+    cart = JSON.parse(cartCookie);
+    cart.push(JSON.stringify(cartItem));
+    document.cookie = "cart=" + JSON.stringify(cart);
+
+    window.location.href= "mycart.html";
+}
 
 
-window.addEventListener('load', () => {
-    var cart = [];
-
-    var orderPage = document.querySelector(".dkcart_order")
-    if (orderPage) {
-        new OrderPage(orderPage);
-    }
-
-})
 
