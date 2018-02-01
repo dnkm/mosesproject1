@@ -10,7 +10,7 @@ function CartItem(type, flavors, num) {
 
 function OrderPage(orderPage) {
     this.orderPage = orderPage;
-    this.flavorOptions = orderPage.querySelector(".dkcart_flavor_options");
+    this.flavorOptions = orderPage.querySelector(".flavor_options");
     this.quantityInput = orderPage.querySelector("#quantity");
     
 
@@ -37,7 +37,6 @@ OrderPage.prototype.onInputClick = function(ev) {
 
     switch(tag.id) {
         case "quantity_less":
-            console.log(this.quantityInput.value)
             this.quantityInput.value = Math.max(parseInt(this.quantityInput.value) - 1, 0);
             break;
         case "quantity_more":

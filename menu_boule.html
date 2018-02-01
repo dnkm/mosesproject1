@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
+<script src="js/cart.js"></script>
 <title>Moses-Bread</title>
 </head>
 <body>
@@ -53,7 +54,7 @@
         <!-- // wrapper -->
         <!-- wrapper -->
         <div class="wrapper">
-            <div class="flexbox">
+            <div class="flexbox dkcart_order">
                 <div class="goods-prview">
                     <div class="preview-img"><img src="images/common/preview_boule_01.jpg" alt="preview_boule_01"></div>
                     <ul class="thumbs clearfix">
@@ -101,7 +102,7 @@
                     </div>
                     <!-- // options2 -->
                     <!-- options3 -->
-                    <div class="options quarter-vertical-padding">
+                    <div class="options quarter-vertical-padding flavor_options">
                         <p class="options-tit">Choose flavor</p>
 
                         <input type="checkbox" id="c-bcheese" class="btn-checkout" name="chooseflavor" value="Blue cheese">
@@ -127,15 +128,18 @@
                     <p class="line line-bottom"></p>
                     <dl class="dl-txt">
                         <dt class="sort">Sourdough Boule Basic</dt>
-                        <dd><strong class="h5">$3.50</strong></dd>
+                        <dd><strong class="h5" id="final_price">$3.50</strong></dd>
                     </dl>
                     <!-- tip-wrap -->
                     <div class="clearfix tip-wrap">                        
                         <div class="quantity-wrap  border-on">
-                            <input class="quantity-inner quantity-input  border-on txt-right" type="text" name="quantity" maxlength="3" value="1">
+                            <input class="quantity-inner quantity-input  border-on txt-right" type="text" name="quantity" id="quantity" maxlength="3" value="1">
                             <div class="quantity-inner">
-                                <button class="btn-caret btn-caret-up border-on" type="button"><i class="fa fa-caret-up" aria-hidden="true"></i></button>
-                                <button class="btn-caret btn-caret-down border-on" type="button"><i class="fa fa-caret-down" aria-hidden="true"></i></button>
+                                <button class="btn-caret btn-caret-up border-on" type="button">
+                                    <i class="fa fa-caret-up" aria-hidden="true" id="quantity_more"></i></button>
+                                <button class="btn-caret btn-caret-down border-on" type="button">
+                                    <i class="fa fa-caret-down" aria-hidden="true" id="quantity_less"></i>
+                                </button>
                             </div>
                         </div>
                         <button class="btn btn-goods btn-bg" type="button">Add to Cart</button>
