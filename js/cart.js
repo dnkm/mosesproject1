@@ -60,7 +60,7 @@ OrderPage.prototype.onInputClick = function(ev) {
 
     var quantity = parseInt(this.orderPage.querySelector("#quantity").value);
 
-    var price = 3.5 + 0.5 * ((this.flavorOptions.classList.contains("on")) ? numOptions : 0) * quantity;
+    var price = (3.5 + 0.5 * ((this.flavorOptions.classList.contains("on")) ? numOptions : 0)) * quantity;
     this.orderPage.querySelector("#final_price").innerText = "$" + price.toFixed(2);
 }
 
