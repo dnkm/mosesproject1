@@ -1,17 +1,23 @@
 function Cart(cartTable) {
-    var cart = this.loadCookie();
+    this.cartTable = cartTable;
+    var cart = this.cart = this.loadCookie();
     var contentEnd = cartTable.querySelector("#cart_content_end");
     var cartItemTemplate = cartTable.querySelector("#cart_item_template");
+
+    if (cart.length == 0) {
+        cartTable.querySelector(".no-order").style.display = "table-row";
+    }
 
     cart.forEach(function(cartItem) {
         var tr = this.createNewTr(cartItem, cartItemTemplate);
         contentEnd.parentNode.insertBefore(tr, contentEnd);
     }, this);
 
-    
+    this.updateSubtotal();
 }
 Cart.prototype.createNewTr = function(cartItem, cartItemTemplate) {
     var tr = cartItemTemplate.cloneNode(true);
+    tr.removeAttribute("id");
     var thumb = (cartItem.type === "Sourdough Baguette") ? "images/common/thumbs_baguette_01.jpg" : "images/common/thumbs_boule_01.jpg";
 
     tr.querySelector(".thumbs img").setAttribute("src", thumb);
@@ -31,9 +37,30 @@ Cart.prototype.createNewTr = function(cartItem, cartItemTemplate) {
 
     tr.querySelector("td:nth-child(2)").innerText = this.calculateUnitPrice(cartItem).toFixed(2);
     tr.querySelector(".quantity-input").value = cartItem.num;
+    tr.querySelector("i.fa-caret-up").addEventListener("click", () => {
+        cartItem.num++;
+        tr.querySelector(".quantity-input").value = cartItem.num;
+        tr.querySelector("td:nth-child(4) span").innerText = (this.calculateUnitPrice(cartItem) * cartItem.num).toFixed(2);
+        this.updateSubtotal();
+    });
+    tr.querySelector("i.fa-caret-down").addEventListener("click", () => {
+        if (cartItem.num == 0) return;
+        cartItem.num--;
+        tr.querySelector(".quantity-input").value = cartItem.num;
+        tr.querySelector("td:nth-child(4) span").innerText = (this.calculateUnitPrice(cartItem) * cartItem.num).toFixed(2);
+        this.updateSubtotal();
+    });
+    tr.querySelector(".fa-times").addEventListener("click", () => {
+        cartItem.num = 0;
+        tr.parentNode.removeChild(tr);
+        this.updateSubtotal();
+    })
     tr.querySelector("td:nth-child(4) span").innerText = (this.calculateUnitPrice(cartItem) * cartItem.num).toFixed(2);
     
     return tr;
+}
+Cart.prototype.updateCart = function() {
+
 }
 Cart.prototype.loadCookie = function() {
     var cartCookie = 
@@ -54,6 +81,12 @@ Cart.prototype.loadCookie = function() {
 }
 Cart.prototype.calculateUnitPrice = function(cartItem) {
     return 3.5 + cartItem.flavors.length * 0.5;
+}
+Cart.prototype.updateSubtotal = function() {
+    let total = this.cart.reduce((acc, cur) => acc + (this.calculateUnitPrice(cur) * cur.num), 0);
+    this.cartTable.querySelector(".last.total strong").innerText = "$" + total.toFixed(2);
+
+    this.cartTable.querySelector(".no-order").style.display = (total == 0) ? "table-row" : "none";
 }
 
 

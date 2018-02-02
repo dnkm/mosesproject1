@@ -7,7 +7,9 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400i,700,700i" rel="stylesheet">
 <link href="css/font-awesome.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-
+<style>
+    #cart_item_template { display: none }
+</style>
 <script src="js/cart.js"></script>
 <script>
     window.addEventListener('load', function() {
@@ -79,7 +81,7 @@
                                 <p class="line line-bottom"></p>    
                             </td>
                         </tr>
-                        <tr class="no-order">
+                        <tr class="no-order" style="display: none">
                             <td colspan="4" class="txt-center"><p class="base-padding"><span class="h2">There is no order content.</span></p></td>
                         </tr>
                         <!-- cart content -->
@@ -87,7 +89,7 @@
                             <td class="first txt-left">
                                 <span class="thumbs"><a href="menu_baguette.html" target="_self"><img src="images/common/thumbs_baguette_01.jpg" alt="thumbs_baguette" /></a></span>
                                 <button class="btn btn-sm btn-bg" type="button">Sourdough Baguette</button>
-<!--                                 
+                                <!--                                 
                                 <button class="btn btn-sm btn-bg btn-bluecheese active" type="button">Blue cheese<i class="fa fa-times" aria-hidden="true"></i></button>
                                 <button class="btn btn-sm btn-bg btn-cranberry active" type="button">Cranberry<i class="fa fa-times" aria-hidden="true"></i></button>
                                  -->
@@ -115,7 +117,7 @@
                             <td class="first txt-left total"><strong>Subtotal</strong></td>
                             <td></td>
                             <td></td>
-                            <td class="last total"><strong style="margin-right: 38px;">$12.50</strong></td>
+                            <td class="last total"><strong style="margin-right: 38px;"></strong></td>
                         </tr>
                     </table>
                     <p class="line line-top"></p>
